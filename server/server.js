@@ -6,11 +6,12 @@ const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const User = require('./user');
 
-// require('dotenv').config();
-mongoose.connect('mongodb+srv://Trevor:XRbWHaRScS33oaKT@cluster0.iusa0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () => console.log(mongoose.connection.readyState));
+require('dotenv').config();
+mongoose.connect(process.env.DB_STRING);
 
 const app = express();
 const port = process.env.PORT || 5000;
+process.env.NODE_ENV = 'production';
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
