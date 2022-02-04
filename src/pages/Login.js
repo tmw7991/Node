@@ -15,7 +15,7 @@ const Login = () => {
               password
             },
             withCredentials: true,
-            url: "http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com:5000",
+            url: "http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com:8080",
           }).then((res) => console.log(res));
     }
 
