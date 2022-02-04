@@ -15,7 +15,7 @@ const Register = () => {
               password
             },
             withCredentials: true,
-            url: "http://localhost:5000/register",
+            url: "/register",
           }).then((res) => console.log(res));
     }
 
