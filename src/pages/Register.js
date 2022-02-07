@@ -15,7 +15,7 @@ const Register = () => {
               password
             },
             withCredentials: true,
-            url: "http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com/register:8080",
+            url: "http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com/register",
           }).then((res) => console.log(res));
     }
 

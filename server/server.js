@@ -15,6 +15,10 @@ process.env.NODE_ENV = 'production';
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cors({
+  origin: 'http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com/',
+  credentials: true
+}))
 
 app.use(session({
     secret: 'supersecret',
