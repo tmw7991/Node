@@ -15,14 +15,14 @@ const Login = () => {
               password
             },
             withCredentials: true,
-            url: "http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com/login",
+            url: "http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com:8081/login",
           }).then((res) => console.log(res));
     }
     const getUser = () => {
         Axios({
             method: "GET",
             withCredentials: true,
-            url: "http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com/user",
+            url: "http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com:8081/user",
           }).then((res) => console.log(res));
     }
 
