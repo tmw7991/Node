@@ -11,14 +11,15 @@ mongoose.connect(process.env.DB_STRING);
 
 const app = express();
 const port = process.env.PORT || 5000;
-process.env.NODE_ENV = 'production';
+const isProduction = process.env.NODE_ENV === 'production'
+const origin = {
+  origin: isProduction ? 'http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com' : '*',
+  credentals: true
+};
 
+app.use(cors(origin));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors({
-  origin: 'http://node-env.eba-dmhujuta.us-west-2.elasticbeanstalk.com/',
-  credentials: true
-}))
 
 app.use(session({
     secret: 'supersecret',
@@ -28,9 +29,9 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-require("./passportConfig")(passport);
+require('./passportConfig')(passport);
 
-app.post("/login", (req, res, next) => {
+app.post('/login', (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
       if (err) throw err;
       if (!user) res.send("Email not recognized");
@@ -61,7 +62,7 @@ app.post('/register', (req, res) => {
     })
 });
 
-app.get("/user", (req, res) => {
+app.get('/user', (req, res) => {
     res.send(req.user);
 });
 
